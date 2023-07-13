@@ -2,4 +2,6 @@ body{
   background-image: linear-gradient(to right top, #de02b9, #bc04b1, #9a07a7, #780a9b, #550c8e, #490b91, #3b0b94, #260d97, #2b0dae, #310cc5, #3709dd, #3d05f5);
   color: #fff;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+  overflow: hidden;
 }

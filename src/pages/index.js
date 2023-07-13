@@ -5,10 +5,12 @@ import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import { useSession, signIn, signOut } from "next-auth/react"
 import favicon from '../../public/favicon.ico'
+import Nav from '@/components/Nav'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+
   const { data: session } = useSession()
   if (!session) {
     return (
@@ -21,12 +23,14 @@ export default function Home() {
         </Head>
       <div className={styles.main}>
         <div className={styles.buttonBox}>
-          <button onClick={() => signIn()} className={styles.button}>Login with Google</button>
+          <button onClick={() => signIn('google')} className={styles.button}>Login with Google</button>
         </div>
         </div>
       </>
       )
-    }
+  }
+  
+
     else {
     return (
       <>
@@ -37,7 +41,12 @@ export default function Home() {
           <link rel="icon" type='image/x-icon' href={favicon} />
         </Head>
         <main className={`${styles.main} ${inter.className}`}>
-          <h2 style={{ textAlign: 'center' }}>Logged in {session.user.email}</h2>
+          <div className={styles.nav}>
+            <Nav />
+            <div className={styles.pane}>
+              <h3>Logged in {session.user.email}</h3>
+            </div>
+            </div>
         </main>
       </>
     )

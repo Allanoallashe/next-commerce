@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   padding: 10px; 
-  height: 95.1vh;
+  height: 100vh;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: #fff;
 }
@@ -17,11 +17,33 @@
 .button{
   height: 34px;
   width: max-content;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
   padding: 6px 12px;
   border: none;
-  font-size: 16px;
+  color: #0d02da;
+  font-size: 20px;
+  letter-spacing: 1.2px;
   font-weight: bold;
-  background-color: #fff;
+  border: solid thin #fff;
+  background: #fff;
+  background-image: linear-gradient(to right, #fa2c02, #ee6a00, #da9300, #c0b600, #9fd300, #75da52, #47de81, #00dfa9, #00c6d5, #00a6ff, #007dff, #02b0fa);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color:transparent;
+}
+
+.nav{
+  display: flex;
+  gap: 50px;
+  height: max-content;
+  padding: 10px;
+}
+.pane{
+  padding: 20px;
+  height: max-content;
+  border: solid 2px #fff;
+  border-radius: 8px;
+  width: 80%;
 }
