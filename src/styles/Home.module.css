@@ -1,0 +1,27 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: 10px; 
+  height: 95.1vh;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #fff;
+}
+
+ .buttonBox{
+  padding: 20px;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button{
+  height: 34px;
+  width: max-content;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 6px 12px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #fff;
+}
