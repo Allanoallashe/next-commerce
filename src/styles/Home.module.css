@@ -47,3 +47,27 @@
   border-radius: 8px;
   width: 80%;
 }
+.details{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.image{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  box-shadow: 0 0 3px 3px #fff;
+}
+.profile{
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.strong{
+  background-image: linear-gradient(to right, #fa2c02, #ee6a00, #da9300, #c0b600, #9fd300, #79dd4f, #4fe57e, #00eaa8, #00d8d6, #00c1ff, #00a4ff, #1f7cff);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color:transparent;
+}

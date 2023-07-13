@@ -1,8 +1,12 @@
-
+'use client'
 import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGear, faGem, faHome, faListUl, faStore } from "@fortawesome/free-solid-svg-icons"
 import Link from 'next/link'
+
+import { useRouter } from 'next/router'
+
+
 
 const activeLink ={
           zIndex: 10,
@@ -25,8 +29,8 @@ const inactiveLink = {
           }
 
 const Nav = () => {
-
-  
+    const router = useRouter()
+    const {pathname} = router
   return (
     <aside>
       <div
@@ -46,20 +50,20 @@ const Nav = () => {
           width: 'max-content',
         }}
       >
-        <Link href={'/dashboard'}
-          style={activeLink}>
+        <Link href={'/Dashboard'}
+          style={pathname ==="/"? activeLink:inactiveLink}>
           <FontAwesomeIcon icon={faHome} /> Dashboard </Link>
 
-        <Link href={'/products'}
-          style={inactiveLink}>
+        <Link href={'/Products'}
+          style={pathname.includes('/Products')?activeLink:inactiveLink}>
           <FontAwesomeIcon icon={faStore} /> Products</Link>
         
-        <Link href={'/orders'}
-          style={inactiveLink}>
+        <Link href={'/Orders'}
+          style={pathname.includes('/Orders')?activeLink:inactiveLink}>
           <FontAwesomeIcon icon={faListUl} /> Orders</Link>
 
-        <Link href={'/settings'}
-          style={inactiveLink}>
+        <Link href={'/Settings'}
+          style={pathname.includes('/Settings')?activeLink:inactiveLink}>
           <FontAwesomeIcon icon={faGear} /> Settings</Link>
       </nav>
     </aside>
