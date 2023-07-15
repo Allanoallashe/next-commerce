@@ -55,7 +55,7 @@ const Nav = () => {
           <FontAwesomeIcon icon={faHome} /> Dashboard </Link>
 
         <Link href={'/Products'}
-          style={pathname.includes('/Products')?activeLink:inactiveLink}>
+          style={pathname.includes('/Products') || pathname.includes('/products')?activeLink:inactiveLink}>
           <FontAwesomeIcon icon={faStore} /> Products</Link>
         
         <Link href={'/Orders'}
