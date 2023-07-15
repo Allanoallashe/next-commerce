@@ -40,7 +40,7 @@ const Products = () => {
               <td>{product.title}</td>
               <td>
                 <Link className={styles.edit} href={'/products/edit/' + product._id}><FontAwesomeIcon icon={faPenToSquare} /> Edit</Link>
-                <Link className={styles.edit} href={'/product/delete/' + product._id}><FontAwesomeIcon icon={faTrash}/>Remove</Link>
+                <Link className={styles.edit} href={'/products/remove/' + product._id}><FontAwesomeIcon icon={faTrash}/>Remove</Link>
               </td>
             </tr>
           ) )}
