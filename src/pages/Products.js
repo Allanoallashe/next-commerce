@@ -36,7 +36,7 @@ const Products = () => {
         </thead>
         <tbody>
           {products.map(product => (
-            <tr>
+            <tr key={product}>
               <td>{product.title}</td>
               <td>
                 <Link className={styles.edit} href={'/products/edit/' + product._id}><FontAwesomeIcon icon={faPenToSquare} /> Edit</Link>

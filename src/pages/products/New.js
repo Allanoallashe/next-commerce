@@ -6,6 +6,7 @@ const NewProducts = () => {
   return (
     <Layout>
       <h3>New Product</h3>
+      <hr></hr>
       <ProductForm/>
     </Layout>
   )

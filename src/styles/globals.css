@@ -3,6 +3,5 @@ body{
   color: #fff;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   box-sizing: border-box;
-  overflow: hidden;
-  min-height: 100vh;
+  overflow-x: hidden;
 }
