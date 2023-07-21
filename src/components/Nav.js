@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faGear, faGem, faHome, faListUl, faStore } from "@fortawesome/free-solid-svg-icons"
+import { faGear, faGem, faHome, faListCheck, faListUl, faStore } from "@fortawesome/free-solid-svg-icons"
 import Link from 'next/link'
 
 import { useRouter } from 'next/router'
@@ -57,6 +57,10 @@ const Nav = () => {
         <Link href={'/Products'}
           style={pathname.includes('/Products') || pathname.includes('/products')?activeLink:inactiveLink}>
           <FontAwesomeIcon icon={faStore} /> Products</Link>
+        
+        <Link href={'/Categories'}
+          style={pathname.includes('/Categories') || pathname.includes('/categories')?activeLink:inactiveLink}>
+          <FontAwesomeIcon icon={faListCheck} /> Categories</Link>
         
         <Link href={'/Orders'}
           style={pathname.includes('/Orders')?activeLink:inactiveLink}>
