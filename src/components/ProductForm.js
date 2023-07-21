@@ -8,7 +8,7 @@ import { faCloudArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { BeatLoader } from 'react-spinners'
 import { ReactSortable } from 'react-sortablejs'
 
-const ProductForm = ({_id,title:initialTitle,description:initialDescription,price:initialPrice,images:existingImages,category:initialCategory}) => {
+  const ProductForm = ({_id,title:initialTitle,description:initialDescription,price:initialPrice,images:existingImages,category:initialCategory}) => {
   const router = useRouter()
 
   const [categories,setCategories] = useState([])

@@ -8,9 +8,10 @@ import { withSwal } from 'react-sweetalert2';
 
 const Category = ({swal}) => {
    const [name, setName] = useState('')
-  const [categories, setCategories] = useState('')
+  const [categories, setCategories] = useState([])
   const [mainCategory, setMainCategory] = useState('')
   const [editedCategory, setEditedCategory] = useState(null)
+  const [properties,setProperties] = useState([])
 
   useEffect(() => {
     fetchCategories();
@@ -71,15 +72,47 @@ const Category = ({swal}) => {
           })
   }
 
+  const addNewProperty = () => {
+    setProperties(prev => {
+      return[...prev, {name:'',values:''}]
+    })
+  }
+
+  const handlePropertyValuesChange = (index,property,newValues) => {
+    setProperties(prev => {
+      const properties = [...prev]
+      properties[index].values = newValues
+      return properties;
+    })
+  }
+  const handlePropertyNameChange = (index,property,newName) => {
+    setProperties(prev => {
+      const properties = [...prev]
+      properties[index].name = newName
+      return properties;
+    })
+  }
+  const removeProperty = (indexToRemove) => {
+    setProperties(prev => {
+      const newProperties = [...prev].filter((p, pIndex) => {
+        return pIndex !== indexToRemove
+      })
+      
+      return newProperties
+      
+    })
+  }
+
   return (
     <Layout>
       <h3>Categories</h3>
-      <hr></hr>
-      <label>{editedCategory ? <h3>Edit Category <span style={{color:'yellow'}}>"{editedCategory.name}"</span></h3> : '+New Category'}
+      <hr style={{backgroundColor:'#f00',}}/>
+      <label >{editedCategory ? <h3>Edit Category <span style={{color:'yellow'}}>"{editedCategory.name}"</span></h3> : '+New Category'}
       </label>
 
       <form onSubmit={saveCategory}>
-        <div>
+        <div style={{ marginTop: '10px' }}>
+          <div>
           <input type='text' placeholder={'Category name'} value={name} onChange={(ev) => { setName(ev.target.value) }} />
 
           <select value={mainCategory} onChange={(ev)=>{setMainCategory(ev.target.value)}}>
@@ -88,12 +121,34 @@ const Category = ({swal}) => {
               <option value={category._id}>{category.name}</option>
             ))}
           </select>
+          </div>
 
-          <button type='submit'>Save</button>
+          <div style={{marginTop:10,display:'flex',flexDirection:'column',gap:8,}}>
+            <label>Properties</label>
+            <button type='button' onClick={addNewProperty}>
+              + New Properties
+            </button>
+            {properties.length > 0 && properties.map((property,index) => (
+              <div>
+                <input type="text"
+                  value={property.name}
+                  onChange={ev => handlePropertyNameChange(index,property, ev.target.value)}
+                  placeholder='property name (example: color)' />
+                
+                <input type="text"
+                  value={property.values}
+                  onChange={ev=>handlePropertyValuesChange(index,property,ev.target.value)}
+                  placeholder='values, comma seperated' />
+                <button onClick={()=>removeProperty(index)}>Remove</button>
+              </div>
+            ))}
+          </div>
+
+          <button style={{marginTop:8}} type='submit'>Save</button>
         </div>
       </form>
 
-      <table className={styles.table}>
+      <table style={{marginTop:10}} border={1} cellPadding={5} cellSpacing={0} className={styles.table}>
         <thead>
           <tr>
             <td>Category name</td>

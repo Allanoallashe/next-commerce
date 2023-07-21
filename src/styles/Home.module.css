@@ -107,5 +107,7 @@
   color: #0a00bf;
   padding: 6px 12px;
   border-radius: 3px;
+  border: none;
+  cursor: pointer;
   background-color: #fff;
 }
