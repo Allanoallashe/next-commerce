@@ -25,16 +25,23 @@ const Category = ({swal}) => {
   
   const saveCategory = async (ev) => {
     ev.preventDefault()
-    const data = { name, mainCategory }
+    const data = {
+      name,
+      mainCategory,
+      properties:properties.map(p => ({name:p.name, values:p.values.split(',')}))
+    }
     if (editedCategory) {
       data._id = editedCategory._id
       await axios.put('/api/categories', data)
       setEditedCategory(null)
+      setMainCategory('');
     }
     else {
       await axios.post('/api/categories', data)
     }
     setName('')
+    setMainCategory('')
+    setProperties([])
     fetchCategories()
   }
 
@@ -42,6 +49,7 @@ const Category = ({swal}) => {
     setEditedCategory(category)
     setName(category.name)
     setMainCategory(category.main?._id)
+    setProperties(category.properties.map(({name,values})=>({name,values:values.join(',')})))
   }
 
   const deleteCategory = (category) => {
@@ -139,16 +147,23 @@ const Category = ({swal}) => {
                   value={property.values}
                   onChange={ev=>handlePropertyValuesChange(index,property,ev.target.value)}
                   placeholder='values, comma seperated' />
-                <button onClick={()=>removeProperty(index)}>Remove</button>
+                <button type='button' onClick={()=>removeProperty(index)}>Remove</button>
               </div>
             ))}
           </div>
-
+          
+          {editedCategory && (<button type='button' onClick={() => {
+            setEditedCategory(null)
+            setName('')
+            setMainCategory('')
+            setProperties([])
+          }}>Cancel</button>)}
           <button style={{marginTop:8}} type='submit'>Save</button>
         </div>
       </form>
 
-      <table style={{marginTop:10}} border={1} cellPadding={5} cellSpacing={0} className={styles.table}>
+      {!editedCategory && (
+        <table style={{marginTop:10}} border={1} cellPadding={5} cellSpacing={0} className={styles.table}>
         <thead>
           <tr>
             <td>Category name</td>
@@ -170,6 +185,8 @@ const Category = ({swal}) => {
           ))}
         </tbody>
       </table>
+      )}
+      
     </Layout>
   )
 }

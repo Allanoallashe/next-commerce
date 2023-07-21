@@ -8,7 +8,7 @@ import { faCloudArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { BeatLoader } from 'react-spinners'
 import { ReactSortable } from 'react-sortablejs'
 
-  const ProductForm = ({_id,title:initialTitle,description:initialDescription,price:initialPrice,images:existingImages,category:initialCategory}) => {
+  const ProductForm = ({_id,title:initialTitle,description:initialDescription,price:initialPrice,images:existingImages,category:initialCategory,properties:initialProperties}) => {
   const router = useRouter()
 
   const [categories,setCategories] = useState([])
@@ -25,11 +25,12 @@ import { ReactSortable } from 'react-sortablejs'
   const [images,setImages] = useState(existingImages || [])
   const [navProducts, setNavProducts] = useState(false);
   const [isUploading,setIsUploading] = useState()
+  const [productProperties,setProductproperties] = useState(initialProperties || {})
 
 
   const uploadProduct = async(ev) => {
     ev.preventDefault()
-    const data = {title,description,price,images,category}
+    const data = {title,description,price,images,category,properties:productProperties}
     if (_id) {
       await axios.put('/api/products', { ...data, _id })
     }
@@ -61,7 +62,23 @@ import { ReactSortable } from 'react-sortablejs'
 
   const sortImages = (images) => {
     setImages(images)
-  }
+    }
+
+     const propertiesToFill = []
+     if (categories.length > 0 && category) {
+       let catInfo = categories.find(({ _id }) => _id === category)
+       propertiesToFill.push(...catInfo.properties)
+       
+    }
+  
+    const setProductProp = (propName,value) => {
+      setProductproperties(prev => {
+        const newProductProp = { ...prev }
+        newProductProp[propName] = value
+        return newProductProp;
+      })
+    }
+
 
   return (
       <form className={styles.form} onSubmit={uploadProduct}>
@@ -77,9 +94,24 @@ import { ReactSortable } from 'react-sortablejs'
             <option value={c._id}>{c.name}</option>
           ))}
         </select>
-      
+        
+      {propertiesToFill.length > 0 && propertiesToFill.map(p=>(
+        <div style={{display:'flex', gap:5}}>
+          <div>{p.name}</div>
+          <select
+            value={productProperties[p.name]}
+            onChange={(ev) => setProductProp(p.name, ev.target.value)}>
+            {p.values.map(v => (
+              <option value={v}>{v}</option>
+            ))}
+          </select>
+        </div>
+        ))}
+            
         <label style={{marginBottom:'10px'}}>Images</label>
+        
         <div style={{display:'flex',gap:6,flexWrap:'wrap',alignItems:'center'}}>
+          
           <ReactSortable style={{display:'flex',gap:8,flexWrap:'wrap'}} list={images} setList={sortImages}>
           {!!images?.length && images.map(link => (
             <div>
@@ -89,6 +121,7 @@ import { ReactSortable } from 'react-sortablejs'
             </div>
           ))}
           </ReactSortable>
+          
           {isUploading && (
             <div><BeatLoader color={'#fff'} speedMultiplier={0.8}/></div>
           )}

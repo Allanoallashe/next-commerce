@@ -8,8 +8,8 @@ export default async function handleCategory (req, res){
   await mongooseConnect()
   
   if (method === 'POST') {
-    const { name, mainCategory } = req.body
-    const categoryInfo = await Category.create({ name, main:mainCategory })
+    const { name, mainCategory,properties } = req.body
+    const categoryInfo = await Category.create({ name, main:mainCategory,properties })
     res.json(categoryInfo)
   }
 
@@ -18,8 +18,8 @@ export default async function handleCategory (req, res){
   }
 
   if (method === 'PUT') {
-    const { name, mainCategory,_id } = req.body
-    const categoryInfo = await Category.updateOne({_id},{ name, main:mainCategory })
+    const { name, mainCategory,_id,properties } = req.body
+    const categoryInfo = await Category.updateOne({_id},{ name, main:mainCategory,properties })
     res.json(categoryInfo)
   }
 
