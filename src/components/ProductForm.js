@@ -1,18 +1,26 @@
 
 import axios from 'axios'
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '@/styles/Home.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCloudArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { BeatLoader } from 'react-spinners'
 import { ReactSortable } from 'react-sortablejs'
 
-const ProductForm = ({_id,title:initialTitle,description:initialDescription,price:initialPrice,images:existingImages}) => {
+const ProductForm = ({_id,title:initialTitle,description:initialDescription,price:initialPrice,images:existingImages,category:initialCategory}) => {
   const router = useRouter()
+
+  const [categories,setCategories] = useState([])
+  useEffect(() => {
+    axios.get('/api/categories').then((res) => {
+      setCategories(res.data)
+    })
+  },[])
 
   const [title, setTitle] = useState(initialTitle || '')
   const [description, setDescription] = useState(initialDescription || '')
+  const [category,setCategory] = useState(initialCategory ||'')
   const [price, setPrice] = useState(initialPrice || '')
   const [images,setImages] = useState(existingImages || [])
   const [navProducts, setNavProducts] = useState(false);
@@ -21,7 +29,7 @@ const ProductForm = ({_id,title:initialTitle,description:initialDescription,pric
 
   const uploadProduct = async(ev) => {
     ev.preventDefault()
-    const data = {title,description,price,images}
+    const data = {title,description,price,images,category}
     if (_id) {
       await axios.put('/api/products', { ...data, _id })
     }
@@ -59,10 +67,20 @@ const ProductForm = ({_id,title:initialTitle,description:initialDescription,pric
       <form className={styles.form} onSubmit={uploadProduct}>
         <label>Product name</label>
         <input type='text' placeholder='product name' value={title} onChange={(ev) => { setTitle(ev.target.value) }} />
+        
+        <label>Category</label>
+        <select value={category} onChange={ev=>setCategory(ev.target.value)}>
+          <option hidden value={ev=>ev.target.value}>
+            Uncategorized
+          </option>
+          {categories.length > 0 && categories.map(c=>(
+            <option value={c._id}>{c.name}</option>
+          ))}
+        </select>
       
         <label style={{marginBottom:'10px'}}>Images</label>
         <div style={{display:'flex',gap:6,flexWrap:'wrap',alignItems:'center'}}>
-          <ReactSortable style={{display:'flex',gap:8}} list={images} setList={sortImages}>
+          <ReactSortable style={{display:'flex',gap:8,flexWrap:'wrap'}} list={images} setList={sortImages}>
           {!!images?.length && images.map(link => (
             <div>
             <div style={{display:'flex',gap:5,background:'#fff', padding:5,marginBottom:'10px', height:150}} key={link}>

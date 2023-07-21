@@ -8,12 +8,25 @@ export default async function handleCategory (req, res){
   await mongooseConnect()
   
   if (method === 'POST') {
-    const { name } = req.body
-    const categoryInfo = await Category.create({ name })
+    const { name, mainCategory } = req.body
+    const categoryInfo = await Category.create({ name, main:mainCategory })
     res.json(categoryInfo)
   }
 
   if (method === 'GET') {
-    res.json(await Category.find())
+    res.json(await Category.find().populate('main'))
   }
+
+  if (method === 'PUT') {
+    const { name, mainCategory,_id } = req.body
+    const categoryInfo = await Category.updateOne({_id},{ name, main:mainCategory })
+    res.json(categoryInfo)
+  }
+
+  if (method === 'DELETE') {
+    const { _id } = req.query
+    await Category.deleteOne({ _id })
+    res.json('ok')
+  }
+
  }
