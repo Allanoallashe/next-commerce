@@ -1,10 +1,11 @@
 'use client'
 import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faGear, faGem, faHome, faListCheck, faListUl, faStore } from "@fortawesome/free-solid-svg-icons"
+import { faGear, faGem, faHome, faListCheck, faListUl, faRightFromBracket, faStore } from "@fortawesome/free-solid-svg-icons"
 import Link from 'next/link'
 
 import { useRouter } from 'next/router'
+import { signOut } from 'next-auth/react'
 
 
 
@@ -31,6 +32,12 @@ const inactiveLink = {
 const Nav = () => {
     const router = useRouter()
     const {pathname} = router
+    
+  const logOut = async () => {
+      await router.push('/')
+      await signOut()
+    }  
+  
   return (
     <aside>
       <div
@@ -50,7 +57,7 @@ const Nav = () => {
           width: 'max-content',
         }}
       >
-        <Link href={'/Dashboard'}
+        <Link href={'/'}
           style={pathname ==="/" || pathname.includes( "/Dashboard") ? activeLink:inactiveLink}>
           <FontAwesomeIcon icon={faHome} /> Dashboard </Link>
 
@@ -69,6 +76,11 @@ const Nav = () => {
         <Link href={'/Settings'}
           style={pathname.includes('/Settings')?activeLink:inactiveLink}>
           <FontAwesomeIcon icon={faGear} /> Settings</Link>
+        
+        <button 
+          onClick={logOut}
+          style={{backgroundImage: 'linear-gradient(to right, #4c1ab8, #363cc6, #1b53d0, #0067d7, #0079db, #107fe5, #1b84ef, #258af9, #5b81ff, #9073ff, #c359ff, #f41fff)',border:'none',borderRadius:'16px',padding:8,cursor:'pointer',color:'#fff',fontSize:'16px',fontWeight:'bold'}}>
+          <FontAwesomeIcon style={{marginRight:3}} icon={faRightFromBracket} rotation={180}/> Logout</button>
       </nav>
     </aside>
   )
