@@ -3,6 +3,30 @@ import Layout from '@/components/Layout'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
+import styles from '@/styles/Home.module.css'
+
+const removeButton = {
+  backgroundColor: 'red',
+  color: '#fff',
+  padding: '8px 16px',
+  width:80,
+  border: 'none',
+  borderRadius: '16px',
+  cursor: 'pointer',
+  fontSize: '18px',
+  fontWeight:'bold',
+}
+const cancelButton = {
+  backgroundColor: 'beige',
+  color: 'navy',
+  padding: '8px 16px',
+  width:80,
+  border: 'none',
+  borderRadius: '16px',
+  cursor: 'pointer',
+  fontSize: '18px',
+  fontWeight:'bold',
+}
 
 const RemoveProduct = () => {
 
@@ -27,10 +51,19 @@ const RemoveProduct = () => {
   }
   return (
     <Layout>
-      <h4>Do you want to remove <span style={{ color: 'pink' }}>"{productInfo?.title}"</span> ?</h4>
-      <div style={{display:'flex', gap:10, justifyContent:'center'}}>
-        <button onClick={removeProduct}>Yes</button>
-        <button onClick={goBack}>No</button>
+      <h4>Do you want to remove <span style={{ color: 'yellow' }}>"{productInfo?.title}"</span> ?</h4>
+      <div
+        style={{ display: 'flex', gap: 30, justifyContent: 'center' }}>
+         <button
+          onClick={goBack}
+          style={cancelButton}
+          className={styles.remProduct}
+        >No</button>
+        <button
+          onClick={removeProduct}
+          style={removeButton}
+          className={styles.remProduct}
+        >Yes</button>
       </div>
     </Layout>
   )

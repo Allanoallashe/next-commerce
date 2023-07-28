@@ -15,18 +15,14 @@ const Products = () => {
   },[])
   return (
     <Layout>
-      <Link href={"/products/New"}
-        style={{
-          textDecoration: "none",
-          color: "#fff",
-          backgroundImage: 'linear-gradient(to right, #4c1ab8, #363cc6, #1b53d0, #0067d7, #0079db, #107fe5, #1b84ef, #258af9, #5b81ff, #9073ff, #c359ff, #f41fff)',
-          padding: '8px 16px',
-          borderRadius: 20,
-          whiteSpace:'nowrap',
-       }}
+      <div>
+        <Link href={"/products/New"}
+          className={styles.newHover}
       >
         +Add new products
       </Link>
+      </div>
+
 
       <table border={1} cellPadding={6} className={styles.table}>
         <thead>
