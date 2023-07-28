@@ -20,27 +20,30 @@ const Products = () => {
           textDecoration: "none",
           color: "#fff",
           backgroundImage: 'linear-gradient(to right, #4c1ab8, #363cc6, #1b53d0, #0067d7, #0079db, #107fe5, #1b84ef, #258af9, #5b81ff, #9073ff, #c359ff, #f41fff)',
-          padding: '8px 20px',
-          borderRadius: 8,
+          padding: '8px 16px',
+          borderRadius: 20,
+          whiteSpace:'nowrap',
        }}
       >
         +Add new products
       </Link>
 
-      <table border={1} cellPadding={6} cellSpacing={0} className={styles.table}>
+      <table border={1} cellPadding={6} className={styles.table}>
         <thead>
           <tr>
-            <td>Product Name</td>
-            <td></td>
+            <td colSpan={2}>Available Products</td>
           </tr>
         </thead>
         <tbody>
           {products.map(product => (
             <tr key={product._id}>
-              <td>{product.title}</td>
-              <td>
+              <td style={{maxWidth:'60%',width:'90%'}}>{product.title}</td>
+              <td className={styles.actions}>
                 <Link className={styles.edit} href={'/products/edit/' + product._id}><FontAwesomeIcon icon={faPenToSquare} /> Edit</Link>
-                <Link className={styles.edit} href={'/products/remove/' + product._id}><FontAwesomeIcon icon={faTrash}/>Remove</Link>
+                <Link style={{
+                  backgroundImage: 'linear-gradient(to right, #eb0998, #ee008b, #ef007d, #ef0071, #ee0064, #ee005b, #ed0053, #ec034a, #ec0143, #ec013b, #ec0433, #eb092b)', color: '#fff',
+                  }}
+                  className={styles.edit} href={'/products/remove/' + product._id}><FontAwesomeIcon icon={faTrash} />Remove</Link>
               </td>
             </tr>
           ) )}

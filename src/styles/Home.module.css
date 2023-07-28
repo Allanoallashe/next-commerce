@@ -3,8 +3,10 @@
   flex-direction: column;
   padding: 10px; 
   min-height: 95.2vh;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Unna', serif;
   color: #fff;
+  font-weight: bold;
+  font-size: 20px;
 }
 
  .buttonBox{
@@ -89,24 +91,53 @@
 }
 
 
+  @import url('https://fonts.googleapis.com/css2?family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
 /* table */
 .table{
   margin-top: 30px;
   width: 100%;
-  border-collapse: separate;
-  border: solid 1px  #08e7dc;
+  border-collapse: collapse;
+  border: solid 1px  #b8e9e9;
   border-radius: 6px;
+  empty-cells: hide;
 }
 .table thead{
-  background-image: linear-gradient(to right, #4c1ab8, #363cc6, #1b53d0, #0067d7, #0079db, #107fe5, #1b84ef, #258af9, #5b81ff, #9073ff, #c359ff, #f41fff);
-  border-radius: 5px;
+  font-size: 20px;
+  font-family: 'Unna', serif;
+  text-transform: uppercase;
+  background-image: linear-gradient(to right, #eb09b2, #b76df3, #659bff, #00bcff, #00d3ff, #00def6, #00e7e5, #00efcc, #00f1af, #08f18a, #49ef5c, #72eb09);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color:transparent;
+  background-size: 10%;
 }
+.table tbody{
+  font-size: 18px;
+  font-weight: normal;
+  font-family: 'Unna', serif;
+  font-style: italic;
+}
+.actions{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-evenly;
+}
+
 .edit{
-  margin-right: 10px;
   text-decoration: none;
-  color: #0a00bf;
-  padding: 6px 12px;
+  color: #0a029e;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 3px;
   border-radius: 3px;
+  width: 100px;
   border: none;
   cursor: pointer;
   background-color: #fff;
