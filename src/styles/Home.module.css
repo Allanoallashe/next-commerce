@@ -42,13 +42,11 @@
   padding: 10px;
 }
 .pane{
-  padding: 16px;
+  padding: 10px 30px;
   height: max-content;
-  border-style: solid;
-  border-radius: 20px;
   width: 80%;
   border-image: linear-gradient(to right, #e1e9ed, #bfd9e8, #9dc9e5, #7bb8e2, #57a7df, #3d9fe9, #2895f2, #258af9, #5b81ff, #9073ff, #c359ff, #f41fff)20;
-  border-image-width: 2px;
+  border-image-width: 4px;
 }
 .details{
   display: flex;
@@ -79,16 +77,49 @@
 .form{
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  font-weight: bold;
+  gap: 10px;
 }
 .form input{
-  height: 34px;
+  height: 40px;
+  color: #15156a;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 6px;
+  padding-left: 10px;
+  border: none;
   outline: none;
+}
+.form input:focus{
+  outline: 2px solid #1cff1c;
 }
 .form textarea{
   height: 100px;
+  color: #15156a;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 6px;
+  outline: none;
+  border: none;
+  padding-left: 10px;
+  resize: none;
+}
+.form textarea:focus{
+  outline: 2px solid #1cff1c;
+}
+.form select{
+  height: 40px;
+  color: #15156a;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 6px;
+  padding-left: 10px;
+  border: none;
   outline: none;
 }
+
+  /*  new products button */
 .newHover{
   display: flex;
   text-decoration: none;
@@ -105,6 +136,8 @@
 .newHover:hover{
   transform: scale(1.035);
 }
+
+
 
 
   @import url('https://fonts.googleapis.com/css2?family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap');
@@ -124,8 +157,9 @@
   font-family: 'Unna', serif;
   text-transform: uppercase;
   background-image: linear-gradient(to right, #eb09b2, #b76df3, #659bff, #00bcff, #00d3ff, #00def6, #00e7e5, #00efcc, #00f1af, #08f18a, #49ef5c, #72eb09);
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
+  background-clip: text;
+  /* -webkit-background-clip: text;
+  -moz-background-clip: text; */
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color:transparent;
   background-size: 10%;
@@ -173,6 +207,27 @@
   box-shadow: 0 0 4px 4px #f5f5;
  }
 
+ .saveBtn{
+  display: flex;
+  padding: 4px;
+  align-items: center;
+  justify-content: center;
+ }
+ .saveBtn button{
+  height: 34px;
+  cursor: pointer;
+  border-radius: 6px;
+  width: 100px;
+  background-image: linear-gradient(to right top, #c4fcef, #adebdd, #95dbcb, #7dcaba, #65baa9);
+  font-weight: bold;
+  color: #004700;
+  border: none;
+  transition: all ease-in-out 0.25s;
+ }
+ .saveBtn button:hover{
+  transform: scale(1.045);
+ }
+ 
  /* arrow back buttons */
  .back{
   display: flex;
@@ -188,4 +243,19 @@
  }
  .back:hover{
   transform: scale(1.045);
+ }
+
+ /* nav bar*/
+ .navSide{
+  /* background-color: green; */
+ }
+ .aside{
+  /* background-color: yellow; */
+ }
+
+ /* media query */
+ @media screen and (max-width:700px) {
+    .aside{
+      display: none;
+    }
  }

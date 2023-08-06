@@ -5,6 +5,7 @@ import { faGear, faGem, faHome, faListCheck, faListUl, faRightFromBracket, faSto
 import Link from 'next/link'
 
 import { useRouter } from 'next/router'
+import styles from '@/styles/Home.module.css'
 import { signOut } from 'next-auth/react'
 
 
@@ -39,7 +40,7 @@ const Nav = () => {
     }  
   
   return (
-    <aside>
+    <aside className={styles.aside}>
       <div
         style={{
           padding: '6px 12px',
@@ -49,7 +50,7 @@ const Nav = () => {
       >
         <h2><FontAwesomeIcon icon={faGem} /> Admin</h2>
       </div>
-      <nav
+      <nav className={styles.navSide}
         style={{
           display: 'flex',
           flexDirection: 'column',

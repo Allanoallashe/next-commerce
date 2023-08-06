@@ -8,6 +8,15 @@ import { faCloudArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { BeatLoader } from 'react-spinners'
 import { ReactSortable } from 'react-sortablejs'
 
+  const heading = {
+  backgroundImage: 'linear-gradient(to right, #eb09b2, #b76df3, #659bff, #00bcff, #00d3ff, #00def6, #00e7e5, #00efcc, #00f1af, #08f18a, #49ef5c, #72eb09)',
+  webkitBackgroundClip: 'text',
+  mozBackgroundClip: 'text',
+  webkitTextFillColor: 'transparent',
+  mozTextFillColor:'transparent',
+  backgroundSize: '10%',
+  }
+
   const ProductForm = ({_id,title:initialTitle,description:initialDescription,price:initialPrice,images:existingImages,category:initialCategory,properties:initialProperties}) => {
   const router = useRouter()
 
@@ -82,10 +91,10 @@ import { ReactSortable } from 'react-sortablejs'
 
   return (
       <form className={styles.form} onSubmit={uploadProduct}>
-        <label>Product name</label>
+        <label >Product name</label>
         <input type='text' placeholder='product name' value={title} onChange={(ev) => { setTitle(ev.target.value) }} />
         
-        <label>Category</label>
+        <label >Category</label>
         <select value={category} onChange={ev=>setCategory(ev.target.value)}>
           <option hidden value={ev=>ev.target.value}>
             Uncategorized
@@ -108,7 +117,7 @@ import { ReactSortable } from 'react-sortablejs'
         </div>
         ))}
             
-        <label style={{marginBottom:'10px'}}>Images</label>
+        <label >Images</label>
         
         <div style={{display:'flex',gap:6,flexWrap:'wrap',alignItems:'center'}}>
           
@@ -133,7 +142,7 @@ import { ReactSortable } from 'react-sortablejs'
             <input onChange={uploadImage} type='file' hidden/>
           </label>
           {!images?.length && (
-              <p>+Add Product Images</p>
+              <p>+Images</p>
             )}
         </div>
       
@@ -142,8 +151,10 @@ import { ReactSortable } from 'react-sortablejs'
       
         <label>Price In KSH</label>
         <input type='number' placeholder='price' value={price} onChange={(ev) => { setPrice(ev.target.value) }} />
-      
-        <button type="submit">Save</button>
+        
+        <div className={styles.saveBtn}>
+          <button type="submit">Save</button>
+        </div>
         </form>
   )
 }

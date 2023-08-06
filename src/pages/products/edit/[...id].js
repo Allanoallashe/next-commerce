@@ -42,7 +42,7 @@ export default function EditProduct() {
         style={{
           textDecoration: 'none',
         }}
-      ><FontAwesomeIcon icon={faArrowAltCircleLeft} />
+      ><FontAwesomeIcon style={{color:'#fff'}} icon={faArrowAltCircleLeft} />
         Back
       </Link>
       <hr
