@@ -228,6 +228,44 @@
   transform: scale(1.045);
  }
  
+
+
+ /* category form */
+
+ .categoryForm input{
+  outline: none;
+  border: none;
+  padding-left: 6px;
+  font-weight: bold;
+  border-radius: 6px;
+ }
+
+ .categoryForm input[type='text']{
+  height: 36px;
+ }
+
+ .categoryForm input:first-child{
+  width: 60%;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+ }
+
+.categoryForm select{
+  height: 38px;
+  background-image: linear-gradient(to right top, #c4fcef, #adebdd, #95dbcb, #7dcaba, #65baa9);
+  color: #004700;
+  cursor: pointer;
+  margin-left: -2px;
+  border-radius: 6px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  outline: none;
+  border: none;
+}
+
+
+
+
  /* arrow back buttons */
  .back{
   display: flex;

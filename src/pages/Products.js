@@ -37,7 +37,8 @@ const Products = () => {
               <td >
                 <div className={styles.actions}>
                 <Link className={styles.edit} href={'/products/edit/' + product._id}><FontAwesomeIcon icon={faPenToSquare} /> Edit</Link>
-                <Link style={{
+                <Link 
+                  style={{
                   backgroundImage: 'linear-gradient(to right, #eb0998, #ee008b, #ef007d, #ef0071, #ee0064, #ee005b, #ed0053, #ec034a, #ec0143, #ec013b, #ec0433, #eb092b)', color: '#fff',
                   }}
                   className={styles.edit} href={'/products/remove/' + product._id}><FontAwesomeIcon icon={faTrash} />Remove</Link>

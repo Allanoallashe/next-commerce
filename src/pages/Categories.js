@@ -118,9 +118,13 @@ const Category = ({swal}) => {
       <label >{editedCategory ? <h3>Edit Category <span style={{color:'yellow'}}>"{editedCategory.name}"</span></h3> : '+New Category'}
       </label>
 
-      <form onSubmit={saveCategory}>
+      <form className={styles.categoryForm} onSubmit={saveCategory}>
         <div style={{ marginTop: '10px' }}>
-          <div>
+          <div
+            style={{
+              display: 'flex',
+            }}
+          >
           <input type='text' placeholder={'Category name'} value={name} onChange={(ev) => { setName(ev.target.value) }} />
 
           <select value={mainCategory} onChange={(ev)=>{setMainCategory(ev.target.value)}}>
@@ -177,8 +181,14 @@ const Category = ({swal}) => {
               <td>{category?.main?.name}</td>
 
               <td>
-                <button onClick={()=>{editCategory(category)}} className={styles.edit} ><FontAwesomeIcon icon={faPenToSquare} /> Edit</button>
-                <button onClick={()=>{deleteCategory(category)}} className={styles.edit} ><FontAwesomeIcon icon={faTrash}/>Remove</button>
+                <div className={styles.actions}>
+                  <button onClick={()=>{editCategory(category)}} className={styles.edit} ><FontAwesomeIcon icon={faPenToSquare} /> Edit</button>
+                  <button onClick={() => { deleteCategory(category) }}
+                    style={{
+                    backgroundImage: 'linear-gradient(to right, #eb0998, #ee008b, #ef007d, #ef0071, #ee0064, #ee005b, #ed0053, #ec034a, #ec0143, #ec013b, #ec0433, #eb092b)', color: '#fff',
+                    }}
+                    className={styles.edit} ><FontAwesomeIcon icon={faTrash} />Remove</button>
+                </div>
               </td>
 
             </tr>
