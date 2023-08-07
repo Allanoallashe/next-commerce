@@ -244,12 +244,6 @@
   height: 36px;
  }
 
- .categoryForm input:first-child{
-  width: 60%;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
- }
-
 .categoryForm select{
   height: 38px;
   background-image: linear-gradient(to right top, #c4fcef, #adebdd, #95dbcb, #7dcaba, #65baa9);
@@ -261,6 +255,76 @@
   border-bottom-left-radius: 0;
   outline: none;
   border: none;
+}
+.propCont{
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.propCont button{
+  height: 36px;
+  width: 40%;
+  cursor: pointer;
+  border-radius: 6px;
+  border: none;
+  background-image: linear-gradient(to right top, #c4fcef, #adebdd, #95dbcb, #7dcaba, #65baa9);
+  color: #004700;
+  font-weight: bold;
+  transition: all ease-in-out 0.25s;
+}
+.propCont button:hover{
+  transform: scale(1.045);
+}
+.scBox{
+  margin-top: 8px;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.scBox button{
+  height: 36px;
+  width: 100px;
+  background-color: #fff;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: all ease-in-out 0.25s;
+}
+.scBox button:hover{
+  transform: scale(1.045);
+}
+
+.scBox button:last-child{
+  background-image: linear-gradient(to right top, #c4fcef, #adebdd, #95dbcb, #7dcaba, #65baa9);
+  color: #004700;
+}
+.props{
+  margin-top: 10px;
+  display: flex;
+  overflow-x: scroll;
+  column-gap: 30px;
+  row-gap: 20px;
+  padding: 2px;
+}
+.props::-webkit-scrollbar{
+  display: none;
+}
+.props input{
+  width: 33%;
+}
+.props button{
+  height: 36px;
+  width: 100px;
+  background-image: linear-gradient(to right top, #c4fcef, #adebdd, #95dbcb, #7dcaba, #65baa9);
+  color: #004700;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: all ease-in-out 0.25s;
 }
 
 

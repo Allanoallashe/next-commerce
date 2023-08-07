@@ -6,6 +6,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { withSwal } from 'react-sweetalert2';
 
+ const heading = {
+  backgroundImage: 'linear-gradient(to right, #eb09b2, #b76df3, #659bff, #00bcff, #00d3ff, #00def6, #00e7e5, #00efcc, #00f1af, #08f18a, #49ef5c, #72eb09)',
+  webkitBackgroundClip: 'text',
+  mozBackgroundClip: 'text',
+  webkitTextFillColor: 'transparent',
+  mozTextFillColor:'transparent',
+  backgroundSize: '10%',
+  }
+
 const Category = ({swal}) => {
    const [name, setName] = useState('')
   const [categories, setCategories] = useState([])
@@ -113,8 +122,13 @@ const Category = ({swal}) => {
 
   return (
     <Layout>
-      <h3>Categories</h3>
-      <hr style={{backgroundColor:'#f00',}}/>
+      <h3 style={heading}>Categories</h3>
+      <hr
+        style={{
+          borderImage: 'linear-gradient(to right, #e1e9ed, #bfd9e8, #9dc9e5, #7bb8e2, #57a7df, #3d9fe9, #2895f2, #258af9, #5b81ff, #9073ff, #c359ff, #f41fff)1',
+          borderRadius:'1px'
+        }}
+      />
       <label >{editedCategory ? <h3>Edit Category <span style={{color:'yellow'}}>`{editedCategory.name}`</span></h3> : '+New Category'}
       </label>
 
@@ -125,7 +139,13 @@ const Category = ({swal}) => {
               display: 'flex',
             }}
           >
-          <input type='text' placeholder={'Category name'} value={name} onChange={(ev) => { setName(ev.target.value) }} />
+            <input
+              style={{
+                borderTopRightRadius: 0,
+                borderBottomRightRadius: 0,
+                width:'60%'
+              }}
+              type='text' placeholder={'Category name'} value={name} onChange={(ev) => { setName(ev.target.value) }} />
 
           <select value={mainCategory} onChange={(ev)=>{setMainCategory(ev.target.value)}}>
             <option value='' hidden>Choose Main Category</option>
@@ -137,11 +157,13 @@ const Category = ({swal}) => {
 
           <div style={{marginTop:10,display:'flex',flexDirection:'column',gap:8,}}>
             <label>Properties</label>
-            <button type='button' onClick={addNewProperty}>
+            <div className={styles.propCont}>
+              <button type='button' onClick={addNewProperty}>
               + New Properties
-            </button>
+              </button>
+            </div>
             {properties.length > 0 && properties.map((property,index) => (
-              <div key={index}>
+              <div className={styles.props} key={index}>
                 <input type="text"
                   value={property.name}
                   onChange={ev => handlePropertyNameChange(index,property, ev.target.value)}
@@ -154,15 +176,19 @@ const Category = ({swal}) => {
                 <button type='button' onClick={()=>removeProperty(index)}>Remove</button>
               </div>
             ))}
+
           </div>
           
-          {editedCategory && (<button type='button' onClick={() => {
+          <div className={styles.scBox}>
+            {editedCategory && (<button type='button' onClick={() => {
             setEditedCategory(null)
             setName('')
             setMainCategory('')
             setProperties([])
-          }}>Cancel</button>)}
-          <button style={{marginTop:8}} type='submit'>Save</button>
+            }}>Cancel</button>)}
+            
+          <button type='submit'>Save</button>
+          </div>
         </div>
       </form>
 
