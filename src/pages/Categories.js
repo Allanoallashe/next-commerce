@@ -115,7 +115,7 @@ const Category = ({swal}) => {
     <Layout>
       <h3>Categories</h3>
       <hr style={{backgroundColor:'#f00',}}/>
-      <label >{editedCategory ? <h3>Edit Category <span style={{color:'yellow'}}>"{editedCategory.name}"</span></h3> : '+New Category'}
+      <label >{editedCategory ? <h3>Edit Category <span style={{color:'yellow'}}>`{editedCategory.name}`</span></h3> : '+New Category'}
       </label>
 
       <form className={styles.categoryForm} onSubmit={saveCategory}>
@@ -130,7 +130,7 @@ const Category = ({swal}) => {
           <select value={mainCategory} onChange={(ev)=>{setMainCategory(ev.target.value)}}>
             <option value='' hidden>Choose Main Category</option>
             {categories.length > 0 && categories.map(category => (
-              <option value={category._id}>{category.name}</option>
+              <option key={category._id} value={category._id}>{category.name}</option>
             ))}
           </select>
           </div>
@@ -141,7 +141,7 @@ const Category = ({swal}) => {
               + New Properties
             </button>
             {properties.length > 0 && properties.map((property,index) => (
-              <div>
+              <div key={index}>
                 <input type="text"
                   value={property.name}
                   onChange={ev => handlePropertyNameChange(index,property, ev.target.value)}

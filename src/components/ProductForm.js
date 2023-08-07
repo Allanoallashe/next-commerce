@@ -100,18 +100,18 @@ import { ReactSortable } from 'react-sortablejs'
             Uncategorized
           </option>
           {categories.length > 0 && categories.map(c=>(
-            <option value={c._id}>{c.name}</option>
+            <option key={c._id} value={c._id}>{c.name}</option>
           ))}
         </select>
         
       {propertiesToFill.length > 0 && propertiesToFill.map(p=>(
         <div style={{display:'flex', gap:5}}>
-          <div>{p.name}</div>
+          <div key={p._id}>{p.name}</div>
           <select
             value={productProperties[p.name]}
             onChange={(ev) => setProductProp(p.name, ev.target.value)}>
             {p.values.map(v => (
-              <option value={v}>{v}</option>
+              <option key={v._id} value={v}>{v}</option>
             ))}
           </select>
         </div>
@@ -123,7 +123,7 @@ import { ReactSortable } from 'react-sortablejs'
           
           <ReactSortable style={{display:'flex',gap:8,flexWrap:'wrap'}} list={images} setList={sortImages}>
           {!!images?.length && images.map(link => (
-            <div>
+            <div key={link._id}>
             <div style={{display:'flex',gap:5,background:'#fff', padding:5,marginBottom:'10px', height:150}} key={link}>
               <img style={{height:'100%',}} src={link} alt=''/>
             </div>

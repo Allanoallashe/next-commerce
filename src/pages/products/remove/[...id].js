@@ -51,7 +51,7 @@ const RemoveProduct = () => {
   }
   return (
     <Layout>
-      <h4>Do you want to remove <span style={{ color: 'yellow' }}>"{productInfo?.title}"</span> ?</h4>
+      <h4>Do you want to remove <span style={{ color: 'yellow' }}>`{productInfo?.title}`</span> ?</h4>
       <div
         style={{ display: 'flex', gap: 30, justifyContent: 'center' }}>
          <button
