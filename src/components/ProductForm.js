@@ -105,8 +105,8 @@ import { ReactSortable } from 'react-sortablejs'
         </select>
         
       {propertiesToFill.length > 0 && propertiesToFill.map(p=>(
-        <div style={{display:'flex', gap:5}}>
-          <div key={p._id}>{p.name}</div>
+        <div  key={p._id} style={{display:'flex', gap:5}}>
+          <div>{p.name}</div>
           <select
             value={productProperties[p.name]}
             onChange={(ev) => setProductProp(p.name, ev.target.value)}>
