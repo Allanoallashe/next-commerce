@@ -59,23 +59,23 @@ const Nav = () => {
         }}
       >
         <Link href={'/'}
-          style={pathname ==="/" || pathname.includes( "/Dashboard") ? activeLink:inactiveLink}>
+          style={pathname ==="/" || pathname.includes( "/dashboard") ? activeLink:inactiveLink}>
           <FontAwesomeIcon icon={faHome} /> Dashboard </Link>
 
-        <Link href={'/Products'}
-          style={pathname.includes('/Products') || pathname.includes('/products')?activeLink:inactiveLink}>
+        <Link href={'/products'}
+          style={pathname.includes('/products')?activeLink:inactiveLink}>
           <FontAwesomeIcon icon={faStore} /> Products</Link>
         
-        <Link href={'/Categories'}
-          style={pathname.includes('/Categories') || pathname.includes('/categories')?activeLink:inactiveLink}>
+        <Link href={'/categories'}
+          style={pathname.includes('/categories')?activeLink:inactiveLink}>
           <FontAwesomeIcon icon={faListCheck} /> Categories</Link>
         
-        <Link href={'/Orders'}
-          style={pathname.includes('/Orders')?activeLink:inactiveLink}>
+        <Link href={'/orders'}
+          style={pathname.includes('/orders')?activeLink:inactiveLink}>
           <FontAwesomeIcon icon={faListUl} /> Orders</Link>
 
-        <Link href={'/Settings'}
-          style={pathname.includes('/Settings')?activeLink:inactiveLink}>
+        <Link href={'/settings'}
+          style={pathname.includes('/settings')?activeLink:inactiveLink}>
           <FontAwesomeIcon icon={faGear} /> Settings</Link>
         
         <button 

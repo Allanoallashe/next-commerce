@@ -22,7 +22,7 @@ const NewProducts = () => {
         style={heading}
       >+New Product</h3>
       <Link
-        href={'/Products'}
+        href={'/products'}
         style={{
           textDecoration: 'none',
         }}

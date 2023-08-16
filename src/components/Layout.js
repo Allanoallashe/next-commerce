@@ -28,7 +28,7 @@ export default function Layout({children}) {
         <div className={styles.buttonBox}>
             <button onClick={async() => {
               signIn('google')
-              await router.push('/')
+                await router.push('/dashboard')
             }} className={styles.button}>Login with Google</button>
         </div>
         </div>

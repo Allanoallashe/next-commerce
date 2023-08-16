@@ -49,7 +49,7 @@ import { ReactSortable } from 'react-sortablejs'
     setNavProducts(true)
   }
   if (navProducts) {
-     router.push('/Products')
+     router.push('/products')
   }
 
   const uploadImage = async(ev) => {

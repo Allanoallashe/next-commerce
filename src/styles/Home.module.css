@@ -158,8 +158,6 @@
   text-transform: uppercase;
   background-image: linear-gradient(to right, #eb09b2, #b76df3, #659bff, #00bcff, #00d3ff, #00def6, #00e7e5, #00efcc, #00f1af, #08f18a, #49ef5c, #72eb09);
   background-clip: text;
-  /* -webkit-background-clip: text;
-  -moz-background-clip: text; */
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color:transparent;
   background-size: 10%;

@@ -16,7 +16,7 @@ const Products = () => {
   return (
     <Layout>
       <div>
-        <Link href={"/products/New"}
+        <Link href={"/products/new"}
           className={styles.newHover}
       >
         +Add new products
